@@ -1,2 +1,2 @@
 # Tamagochi
-A tamagochi name in Java
+A tamagochi game in Java
