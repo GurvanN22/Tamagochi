@@ -22,12 +22,6 @@ public class App extends Application {
     private Scene mainScene;
 
     public void initMenu(Stage stage) {
-        //Class<?> clazz = this.getClass();
-        //InputStream input = clazz.getResourceAsStream("./assets/img/flo.png");
-        //Image image = new Image(input);
-        //ImageView imageView = new ImageView(image);
-        //imageView.setFitWidth(50);
-        //imageView.setFitHeight(50);
         Button feedButton = new Button("Feed");
         feedButton.getStyleClass().add("main-menu-button");
         Button playButton = new Button("Play");
@@ -43,7 +37,7 @@ public class App extends Application {
         HBox H2 = new HBox(playButton , cleanButton);
         VBox V1 = new VBox( H1 , H2);
         mainScene = new Scene(V1, 640, 480);
-        String cssPath = getClass().getResource("/app.css").toString();
+        String cssPath = getClass().getResource("/css/main-menu.css").toString();
         mainScene.getStylesheets().add(cssPath);
         stage.setScene(mainScene);
         stage.show();
