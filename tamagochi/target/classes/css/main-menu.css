@@ -1,0 +1,11 @@
+.main-menu-button {
+    -fx-background-color:ghostwhite; 
+    -fx-pref-height: 50px;
+    -fx-pref-width: 100px;
+    -fx-text-fill: black, 20px;
+}
+.main-menu-button:hover {
+    -fx-background-color: lightskyblue ; 
+    -fx-text-fill: ghostwhite;
+    -fx-border-color: ghostwhite;
+}
