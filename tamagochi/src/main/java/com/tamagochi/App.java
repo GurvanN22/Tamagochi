@@ -150,7 +150,10 @@ public class App extends Application {
         stage.setScene(mainScene);
         stage.show();
     }
-
+    /**
+     * start the tamagochi
+     **/
+    
     @Override
     public void start(Stage stage) {
         initMenu(stage);
