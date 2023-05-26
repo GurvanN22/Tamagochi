@@ -19,6 +19,7 @@ import javafx.stage.Stage;
  * {@link} https://github.com/GurvanN22/Tamagochi
  **/
 public class App extends Application {
+
     /**
      * The main scene of the tamagochi.
      **/
@@ -165,6 +166,8 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+        
+        
     }
 
 }
