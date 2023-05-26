@@ -24,13 +24,19 @@ public class App extends Application {
         Button consoleButton = new Button("Play in console mode");
         Button fxButton = new Button("Play in FX mode");
         consoleButton.getStyleClass().add("main-menu-button");
+        fxButton.getStyleClass().add("start-menu-button");
+        consoleButton.getStyleClass().add("start-menu-button");
         consoleButton.setOnAction(e -> {
+            stage.close();
+            new ConsoleMode();
         });
         fxButton.setOnAction(e -> {
             new FXmode(stage);
         });
+        Label label = new Label("Choose your mode");
         HBox H1 = new HBox( consoleButton , fxButton);
-        Scene chooseModeScene = new Scene(H1, 640, 480);
+        VBox V1 = new VBox( label , H1);
+        Scene chooseModeScene = new Scene(V1, 640, 480);
         chooseModeScene.setOnKeyPressed(event -> {
         String codeString = event.getCode().toString();});
         String cssPath = getClass().getResource("/css/start-game.css").toString();

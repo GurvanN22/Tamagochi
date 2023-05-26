@@ -2,6 +2,6 @@ package com.tamagochi;
 
 public class ConsoleMode {
     ConsoleMode() {
-        System.out.println("Console mode");
+        System.out.println("Welcome to the tamagochi console mode !");
     }
 }
