@@ -1,13 +1,14 @@
 package com.tamagochi;
 
+import java.io.Console;
+
+import com.Tamagochi;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -16,7 +17,7 @@ import javafx.stage.Stage;
  * Tamagochi App
  * {@link} https://github.com/GurvanN22/Tamagochi
  **/
-public class App extends Application {
+public class App extends Application implements Save{
     /**
      * The menu selection of the tamagochi type.
      **/
@@ -53,5 +54,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
-
 }
