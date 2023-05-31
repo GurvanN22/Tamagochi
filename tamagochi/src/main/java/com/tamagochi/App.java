@@ -1,7 +1,6 @@
 package com.tamagochi;
 
 import java.io.Console;
-
 import com.Tamagochi;
 
 import javafx.application.Application;
