@@ -11,12 +11,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
 /**
  * Tamagochi App
  * {@link} https://github.com/GurvanN22/Tamagochi
  **/
-public class App extends Application implements Save{
+public class App extends Application implements Save {
     /**
      * The menu selection of the tamagochi type.
      **/
@@ -28,31 +27,38 @@ public class App extends Application implements Save{
         consoleButton.getStyleClass().add("start-menu-button");
         consoleButton.setOnAction(e -> {
             stage.close();
-            new ConsoleMode();
+            Thread timer = new Thread(new MinuteTimer());
+            timer.start();
+            Thread consolGame = new Thread(new ConsoleMode());
+            consolGame.start();
         });
         fxButton.setOnAction(e -> {
-            new FXmode(stage);
+            Thread timer = new Thread(new MinuteTimer());
+            timer.start();
+            Thread FXGame = new Thread(new FXmode(stage));
+            FXGame.start();
         });
         Label label = new Label("Choose your mode");
-        HBox H1 = new HBox( consoleButton , fxButton);
-        VBox V1 = new VBox( label , H1);
+        HBox H1 = new HBox(consoleButton, fxButton);
+        VBox V1 = new VBox(label, H1);
         Scene chooseModeScene = new Scene(V1, 640, 480);
         chooseModeScene.setOnKeyPressed(event -> {
-        String codeString = event.getCode().toString();});
+            String codeString = event.getCode().toString();
+        });
         String cssPath = getClass().getResource("/css/start-game.css").toString();
         chooseModeScene.getStylesheets().add(cssPath);
         stage.setScene(chooseModeScene);
         stage.show();
     }
+
     @Override
     public void start(Stage stage) {
-       //new FXmode(stage);
-       initSelectionMenu(stage);
+        // new FXmode(stage);
+        initSelectionMenu(stage);
     }
 
     public static void main(String[] args) {
         launch();
-        
-        
+
     }
 }

@@ -1,6 +1,6 @@
 package com.tamagochi;
 
-public class ConsoleMode {
+public class ConsoleMode implements Runnable {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_BLACK = "\u001B[30m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -10,10 +10,18 @@ public class ConsoleMode {
     public static final String ANSI_PURPLE = "\u001B[35m";
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String PURPLE = "\033[0;35m";  // PURPLE
+    public static final String PURPLE = "\033[0;35m";
     public static final String WHITE_BACKGROUND = "\033[47m";
-    ConsoleMode() {
-        System.out.print("\033[H\033[2J");  
-        System.out.println(WHITE_BACKGROUND + WHITE_BACKGROUND +  "Welcome to the tamagochi console mode !");
+
+    public static void main(String[] args) {
+        ConsoleMode consoleMode = new ConsoleMode();
+        Thread thread = new Thread(consoleMode);
+        thread.start();
+    }
+
+    @Override
+    public void run() {
+        System.out.print("\033[H\033[2J");
+        System.out.println(WHITE_BACKGROUND + WHITE_BACKGROUND + "Welcome to the tamagotchi console mode !");
     }
 }
