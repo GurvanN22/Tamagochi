@@ -1,7 +1,6 @@
 package com.tamagochi;
 
 import java.io.Console;
-import com.Tamagochi;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -35,7 +34,7 @@ public class App extends Application implements Save {
         fxButton.setOnAction(e -> {
             Thread timer = new Thread(new MinuteTimer());
             timer.start();
-            Thread FXGame = new Thread(new FXmode(stage));
+            Thread FXGame = new Thread(new FXmode());
             FXGame.start();
         });
         Label label = new Label("Choose your mode");
@@ -53,14 +52,9 @@ public class App extends Application implements Save {
 
     @Override
     public void start(Stage stage) {
-<<<<<<< HEAD
-        // new FXmode(stage);
-        initSelectionMenu(stage);
-=======
        //new FXmode(stage);
        System.out.print("\033[H\033[2J"); 
        initSelectionMenu(stage);
->>>>>>> consoleMod
     }
 
     public static void main(String[] args) {

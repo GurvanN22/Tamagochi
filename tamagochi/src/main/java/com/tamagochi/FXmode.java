@@ -31,8 +31,8 @@ public class FXmode extends Application implements Runnable {
 
     private Stage stage;
 
-    public FXmode(Stage stage) {
-    }
+    // public FXmode(Stage stage) {
+    // }
 
     public static void main(String[] args) {
         FXmode fxMode = new FXmode();
