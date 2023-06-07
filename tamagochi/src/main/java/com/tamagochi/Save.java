@@ -10,8 +10,6 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import com.Tamagochi;
-
 public interface Save {
     /*
      * A function who save the game ( the tamagochi class)
