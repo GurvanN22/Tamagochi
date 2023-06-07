@@ -38,7 +38,8 @@ public class App extends Application implements Save{
         VBox V1 = new VBox( label , H1);
         Scene chooseModeScene = new Scene(V1, 640, 480);
         chooseModeScene.setOnKeyPressed(event -> {
-        String codeString = event.getCode().toString();});
+        String codeString = event.getCode().toString();
+    });
         String cssPath = getClass().getResource("/css/start-game.css").toString();
         chooseModeScene.getStylesheets().add(cssPath);
         stage.setScene(chooseModeScene);
@@ -47,6 +48,7 @@ public class App extends Application implements Save{
     @Override
     public void start(Stage stage) {
        //new FXmode(stage);
+       System.out.print("\033[H\033[2J"); 
        initSelectionMenu(stage);
     }
 

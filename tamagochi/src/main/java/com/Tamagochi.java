@@ -15,8 +15,8 @@ public class Tamagochi implements Serializable{
         this.name = name;
         this.age = 0;
         this.health = 100;
-        this.hunger = 0;
-        this.happiness = 100;
+        this.hunger = 50;
+        this.happiness = 15;
         this.hygiene = 100;
         this.IsSick = false;
     }
