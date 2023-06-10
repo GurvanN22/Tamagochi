@@ -4,8 +4,9 @@
 .start-menu-button {
     -fx-background-color:ghostwhite; 
     -fx-pref-height: 50px;
-    -fx-pref-width: 150px;
+    -fx-pref-width: 680px;
     -fx-text-fill: black, 20px;
+    -fx-font-size: 24pt;
 }
 .start-menu-button:hover {
     -fx-background-color: lightskyblue ; 

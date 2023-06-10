@@ -19,28 +19,21 @@ public class App extends Application implements Save {
      * The menu selection of the tamagochi type.
      **/
     private void initSelectionMenu(Stage stage) {
-        Button consoleButton = new Button("Play in console mode");
-        Button fxButton = new Button("Play in FX mode");
+        Button consoleButton = new Button("Play in console mode(not recommanded :) )");
+        Button fxButton = new Button("Play in FX mode(recommanded)");
         consoleButton.getStyleClass().add("main-menu-button");
         fxButton.getStyleClass().add("start-menu-button");
         consoleButton.getStyleClass().add("start-menu-button");
         consoleButton.setOnAction(e -> {
             stage.close();
-            Thread timer = new Thread(new MinuteTimer());
-            timer.start();
-            Thread consolGame = new Thread(new ConsoleMode());
-            consolGame.start();
+            new ConsoleMode();
         });
         fxButton.setOnAction(e -> {
-            Thread timer = new Thread(new MinuteTimer());
-            timer.start();
-            Thread FXGame = new Thread(new FXmode());
-            FXGame.start();
+            new FXmode(stage);
         });
         Label label = new Label("Choose your mode");
-        HBox H1 = new HBox(consoleButton, fxButton);
-        VBox V1 = new VBox(label, H1);
-        Scene chooseModeScene = new Scene(V1, 640, 480);
+        VBox V1 = new VBox(label, consoleButton, fxButton);
+        Scene chooseModeScene = new Scene(V1, 680, 480);
         chooseModeScene.setOnKeyPressed(event -> {
         String codeString = event.getCode().toString();
     });
@@ -59,6 +52,5 @@ public class App extends Application implements Save {
 
     public static void main(String[] args) {
         launch();
-
     }
 }

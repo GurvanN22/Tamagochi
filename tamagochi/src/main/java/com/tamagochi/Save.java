@@ -34,8 +34,7 @@ public interface Save {
     };
     public default Tamagochi load() {
         Path filePath = Path.of("./save.dat");
-        if(Files.exists(filePath)) {
-
+        if(Files.exists(filePath) == true) {
             try{
                 byte[] data = Files.readAllBytes(filePath);
                 ByteArrayInputStream bais = new ByteArrayInputStream(data);
@@ -43,7 +42,12 @@ public interface Save {
                 Tamagochi tama = (Tamagochi) ois.readObject();
                 bais.close();
                 ois.close();
-                return tama;
+                if(tama.IsDead == true) {
+                    return new Tamagochi();
+                } else {
+                    return tama;
+                }
+                
             }
             catch(ClassNotFoundException e){
                 System.out.println("Save error" + e);
@@ -53,6 +57,6 @@ public interface Save {
             } 
         }
         System.out.println("No save found");
-        return new Tamagochi("noa2");
+        return new Tamagochi();
     };
 }

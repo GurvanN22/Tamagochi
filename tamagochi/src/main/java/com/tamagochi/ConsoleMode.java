@@ -1,73 +1,82 @@
 package com.tamagochi;
+import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-public class ConsoleMode implements Runnable {
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String PURPLE = "\033[0;35m";
-    public static final String WHITE_BACKGROUND = "\033[47m";
-
-    public static final String reset = "\u001B[0m";
-    public static final String purple = "\033[0;35m";
-    public static final String whiteBack = "\033[47m";
-    public static final String purpleBack = "\u001B[45m";
-    public static final String redBack = "\u001B[41m";
-    public static final String yellowBack = "\u001B[43m";
-    Tamagochi pet = new Tamagochi("Bird");
-
+public class ConsoleMode implements Display, Save {
+    private Tamagochi pet;
+    private Timer timer;
+    private Scanner scanner = new Scanner(System.in);
+    
     public ConsoleMode() {
-        System.out.print("\033[H\033[2J");
-        System.out.println("Welcome to the tamagochi console mode !\n\n\n\n\n\n\n");
-        try {
-            String asciiBeast = getClass().getResource("/AsciiArt/bird").toString();
-            System.out.println("Ton tamagochi ? (temp)");
-        } catch (Exception e) {
-            System.out.println("Error while loading the ascii art");
+        pet = load();
+        if (pet.IsEgg) {
+            System.out.print("\033[H\033[2J");
+            if (pet.IsNew) {
+                System.out.print("What is his name? => ");
+                String name = scanner.nextLine();
+                pet.name = name;
+                pet.IsNew = false;
+                save(pet);
+                
+                System.out.print("\033[H\033[2J");
+            }
+            System.out.println(pet.name + " is an egg! He has " + pet.age + " days.\n");
         }
-        displayPetInfos();
+        // Start the timer to call the grow() method every ten seconds
+        timer = new Timer();
+        timer.schedule(new GrowTask(), 0, 10000);
     }
-
-    private void displayPetInfos() {
-        System.out.println("Name : " + pet.name);
-        System.out.println("Age : " + pet.age);
-        System.out.println("Health : ");
-        displayColorLine(redBack, pet.health);
-        System.out.println("Hunger : ");
-        displayColorLine(yellowBack, pet.hunger);
-        System.out.println("Happiness : ");
-        displayColorLine(purpleBack, pet.happiness * 2);
-    }
-
-    void displayColorLine(String color, int number) {
-        String coloredSpaces = "";
-        String whiteSpaces = "";
-        while (number > 0) {
-            coloredSpaces += " ";
-            number--;
+    
+    private void makeAction() {
+        while(true) {
+             String choice = Display.displayPetInfos(this.pet , scanner);
+        switch (choice) {
+            case "1":
+            this.pet.feed();
+            break;
+            case "2":
+            this.pet.play();
+            break;
+            case "3":
+            this.pet.wash();
+            break;
+            case "4":
+            this.pet.heal();
+            break;
+            case "5":
+            save(this.pet);
+            System.exit(0);
+            break;
         }
-        number = 100 - coloredSpaces.length();
-        while (number > 0) {
-            whiteSpaces += " ";
-            number--;
         }
-        System.out.println(color + coloredSpaces + whiteBack + whiteSpaces + reset);
     }
-
-    public static void main(String[] args) {
-        ConsoleMode consoleMode = new ConsoleMode();
-        Thread thread = new Thread(consoleMode);
-        thread.start();
+    
+    public void grow() {
+        pet.grow();
+        switch (pet.state) {
+            case "egg":
+            System.out.println(pet.name + " is an egg! He has " + pet.age + " days.\n");
+            break;
+            case "dead":
+            System.out.println(pet.name + " is dead! Reload the game to play again.");
+            save(pet);
+            System.exit(0);
+            default:
+            makeAction();
+            break;
+        }
+        save(pet);
     }
-
-    @Override
-    public void run() {
-        ConsoleMode consoleMode = new ConsoleMode();
+    
+    private class GrowTask extends TimerTask {
+        @Override
+        public void run() {
+            ExecutorService executor = Executors.newSingleThreadExecutor();
+            executor.execute(ConsoleMode.this::grow);
+            executor.shutdown();
+        }
     }
 }
-
