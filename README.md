@@ -8,3 +8,5 @@
   This projet is not finish like for us. Its functionnal but not aesthetic.
   
   There is a bug in the console Mode , even if it work pretty well its just a visual but in the console.
+  
+  This projet was made by Tayvadi , Noa and Gurvan
