@@ -1,11 +1,54 @@
-.main-menu-button {
+.main-menu-button-play {
     -fx-background-color:ghostwhite; 
-    -fx-pref-height: 50px;
-    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-pref-width: 200px;
     -fx-text-fill: black, 20px;
+    -fx-font-size: 24pt;
 }
-.main-menu-button:hover {
+.main-menu-button-play:hover {
+    -fx-background-color: rgb(146, 33, 33) ; 
+    -fx-text-fill: ghostwhite;
+    -fx-border-color: ghostwhite;
+}
+.main-menu-button-feed {
+    -fx-background-color:ghostwhite; 
+    -fx-pref-height: 100px;
+    -fx-pref-width: 200px;
+    -fx-text-fill: black, 20px;
+    -fx-font-size: 24pt;
+}
+.main-menu-button-feed:hover {
+    -fx-background-color: rgb(176, 191, 93) ; 
+    -fx-text-fill: ghostwhite;
+    -fx-border-color: ghostwhite;
+}
+.main-menu-button-heal {
+    -fx-background-color:ghostwhite; 
+    -fx-pref-width: 200px;
+    -fx-text-fill: black, 20px;
+    -fx-font-size: 24pt;
+}
+.main-menu-button-heal:hover {
+    -fx-background-color: rgb(74, 159, 82); 
+    -fx-text-fill: ghostwhite;
+    -fx-border-color: ghostwhite;
+}
+.main-menu-button-clean {
+    -fx-background-color:ghostwhite; 
+    -fx-pref-height: 100px;
+    -fx-pref-width: 200px;
+    -fx-text-fill: black, 20px;
+    -fx-font-size: 24pt;
+}
+.main-menu-button-clean:hover {
     -fx-background-color: lightskyblue ; 
     -fx-text-fill: ghostwhite;
     -fx-border-color: ghostwhite;
 }
+
+.main-menu-text  { 
+    -fx-font-smoothing-type: lcd;
+    -fx-fill: black;
+    -fx-font-size: 24pt;
+}
+
