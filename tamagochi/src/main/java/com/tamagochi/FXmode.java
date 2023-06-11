@@ -87,12 +87,15 @@ public class FXmode implements Save{
                 Label hapiness = new Label("Happiness" + pet.happiness + "/50");
                 Label name = new Label("Name : " + pet.name);
                 Label age = new Label("Age " + pet.age + " days");
+                Label state = new Label("State :" + pet.state);
                 feedLabel.getStyleClass().add("main-menu-text");
                 cleanLabel.getStyleClass().add("main-menu-text");
                 sickLabel.getStyleClass().add("main-menu-text");
                 hapiness.getStyleClass().add("main-menu-text");
                 name.getStyleClass().add("main-menu-text");
-                age.getStyleClass().add("main-menu-text");
+                age.getStyleClass().add("main-menu-text"); 
+                state.getStyleClass().add("main-menu-text");
+                
                 
                 Button feedButton = new Button("Feed");
                 feedButton.getStyleClass().add("main-menu-button-feed");
@@ -122,7 +125,7 @@ public class FXmode implements Save{
                 
                 HBox H1 = new HBox(feedButton , healButton);
                 HBox H2 = new HBox(playButton , cleanButton);        
-                VBox V2 = new VBox(name , age , hapiness , feedLabel , cleanLabel , sickLabel);
+                VBox V2 = new VBox(name , age ,state, hapiness , feedLabel , cleanLabel , sickLabel);
                 VBox V1 = new VBox(V2 ,H1 , H2);
                 mainScene = new Scene(V1, 840, 680);
                 String cssPath = getClass().getResource("/css/main-menu.css").toString();
